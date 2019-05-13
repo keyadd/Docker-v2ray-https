@@ -1,0 +1,109 @@
+{
+  "log": {
+    "access": "/var/log/v2ray/access.log",
+    "error": "/var/log/v2ray/error.log",
+    "loglevel": "warning"
+  },
+  "inbound": {
+    "port": 19487,
+    "protocol": "vmess",
+    "settings": {
+            "clients": [
+                {
+                "id": "e1e69406-9c61-4b1a-3ae7-86fd6cbeec23",
+                "level": 1,
+                "alterId": 64,
+                "security": "chacha20-poly1305"
+                },
+                {
+                "alterId": 88, 
+                "level": 2,
+                "security": "chacha20-poly1305", 
+                "id": "a3ad413e-cf78-80b0-bef1-9e4f8a79c484"
+                }, 
+                {
+                "alterId": 101,
+                "level": 3,
+                "security": "chacha20-poly1305", 
+                "id": "ce40b96e-9705-daef-346d-526dec60e0a5"
+                }, 
+                {
+                "alterId": 120,
+                "level": 4, 
+                "security": "chacha20-poly1305", 
+                "id": "d461eb0b-11d1-0de5-d7e5-aef7a1943281"
+                }, 
+                {
+                "alterId": 100,
+                "level": 5, 
+                "security": "chacha20-poly1305", 
+                "id": "dd7e48f0-11ad-7860-bf04-d321b052a196"
+                }
+        ]
+        },
+    "streamSettings": {
+      "network": "ws",
+      "wsSettings": {
+        "connectionReuse": false,
+        "path": "/"
+      }
+    },
+    "detour": {
+      "to": "vmess-detour"
+    }
+  },
+  "outbound": {
+    "protocol": "freedom",
+    "settings": {}
+  },
+  "inboundDetour": [{
+      "protocol": "vmess",
+      "port": "45000-45999",
+      "tag": "vmess-detour",
+      "settings": {},
+      "allocate": {
+        "strategy": "random",
+        "concurrency": 5,
+        "refresh": 5
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "connectionReuse": false,
+          "path": "/"
+        }
+      }
+    }
+  ],
+  "outboundDetour": [{
+    "protocol": "blackhole",
+    "settings": {},
+    "tag": "blocked"
+  }],
+  "routing": {
+    "strategy": "rules",
+    "settings": {
+      "rules": [{
+        "type": "field",
+        "ip": [
+          "0.0.0.0/8",
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "127.0.0.0/8",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.0.0.0/24",
+          "192.0.2.0/24",
+          "192.168.0.0/16",
+          "198.18.0.0/15",
+          "198.51.100.0/24",
+          "203.0.113.0/24",
+          "::1/128",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked"
+      }]
+    }
+  }
+}
