@@ -10,6 +10,20 @@
 > www.test.com_location 文件修改为自己域名的前缀 ××××_location (xxxx 代表自己的域名)
 > client 为客户端连接文件
 
+```
+v2ray
+├── client
+│   └── client.json
+├── config.json
+├── docker-compose.yml
+├── nginx
+│   └── vhost.d
+│       ├── default
+│       └── www.test.com_location
+└── README.md
+
+```
+
 > 执行安装命令
 ```
 docker-compose up -d
