@@ -8,6 +8,7 @@
 > www.test.com 替换自己域名  
 > test@gmail.com 替换自己的邮箱
 > www.test.com_location 文件修改为自己域名的前缀 ××××_location (xxxx 代表自己的域名)
+> client 为客户端连接文件
 
 > 执行安装命令
 ```
