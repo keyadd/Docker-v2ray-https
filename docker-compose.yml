@@ -15,10 +15,10 @@ services:
       - ./v2ray_logs:/var/log/v2ray/
       - ./config.json:/etc/v2ray/config.json:ro
     environment:
-      - "VIRTUAL_HOST=app.etshfw.cn" #域名
+      - "VIRTUAL_HOST=www.test.com" #域名
       - "VIRTUAL_PORT=19487"
-      - "LETSENCRYPT_HOST=app.etshfw.cn" #域名
-      - "LETSENCRYPT_EMAIL=1003451387@qq.com" #邮箱
+      - "LETSENCRYPT_HOST=www.test.com" #域名
+      - "LETSENCRYPT_EMAIL=test@gmail.com" #邮箱
   nginx:
     image: nginx
     labels:
