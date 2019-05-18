@@ -1,4 +1,4 @@
-version: '1'
+version: '2'
 services:
   v2ray:
     container_name: v2ray
